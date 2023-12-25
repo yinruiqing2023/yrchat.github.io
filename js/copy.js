@@ -1,5 +1,5 @@
      function copyTextToClipboard() {
-            const textToCopy = "guluy007";
+            const textToCopy = "fishhome666";
 
             // 创建一个临时文本输入框
             const tempInput = document.createElement("input");
@@ -18,7 +18,7 @@
 
             // 根据复制是否成功，显示相应提示信息
             if (successful) {
-                alert("已成功复制");
+                alert("已成功复制" + textToCopy);
             } else {
                 alert("复制失败，请手动复制文本: " + textToCopy);
             }
