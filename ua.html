@@ -1,0 +1,26 @@
+<html>
+<head><style>
+    html {
+      font-size: 40px;
+    }
+  </style>
+<title>浏览器版本检查</title>
+</head>
+<body>
+<script>
+var userAgent = navigator.userAgent;
+var versionIndex = userAgent.indexOf("Chrome") + 7;
+var version = userAgent.substring(versionIndex, versionIndex + 12);
+document.write("<p>浏览器版本号为 " + version + "</p>");
+
+</script>
+<div><p>如果浏览器版本低于85，则无法使用部分功能</p></div>
+<div><p>如果浏览器版本低于70，则无法使用几乎全部功能</p></div>
+<div><p>如果浏览器版本没有显示，则浏览器使用的内核不为chrome或WebView</p></div>
+<div><p>手机网页/电脑网页：更新浏览器</p></div>
+<div><p>手机app：安装自带内核版(在使用时自动下载，发现浏览器版本有变化前请注意流量，内核大约100MB)</p></div>
+<div><p>内核版app下载链接: https://pan.huang1111.cn/s/NO2Gt1</p></div>
+
+
+</body>
+</html>
