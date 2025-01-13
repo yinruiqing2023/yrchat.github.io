@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>倒计日</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2em;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+
+        span {
+            font-weight: bold;
+            font-size: 1.5em;
+            color: #e74c3c;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            width: 80%;
+            max-width: 600px;
+        }
+    </style>
+    <script>
+        window.addEventListener('load', function () {
+            // 合并计算日期差的函数并优化
+            function calculateDateDifference(targetDateStr, targetElementId) {
+                const targetDate = new Date(targetDateStr);
+                const currentDate = new Date();
+                const timeDifference = targetDate.getTime() - currentDate.getTime();
+                const dayDifference = Math.ceil(timeDifference / (1000 * 3600 * 24));
+                document.getElementById(targetElementId).innerHTML = dayDifference;
+            }
+
+            calculateDateDifference("February 16, 2025", "dateDifference");
+            calculateDateDifference("June 28, 2025", "dateDifference1");
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>倒计日</h1>
+        <p>离开学还有<span id="dateDifference"></span>天</p>
+        <p>离中考还有<span id="dateDifference1"></span>天</p>
+    </div>
+</body>
+
+</html>
