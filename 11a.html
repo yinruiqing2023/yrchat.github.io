@@ -20,13 +20,13 @@
         }
 
         p {
-            font-size: 1.2em;
+            font-size: 1.0em;
             margin: 20px 0;
         }
 
         span {
             font-weight: bold;
-            font-size: 1.5em;
+            font-size: 1.45em;
             color: #e74c3c;
         }
 
@@ -42,17 +42,32 @@
     </style>
     <script>
         window.addEventListener('load', function () {
-            // 合并计算日期差的函数并优化
-            function calculateDateDifference(targetDateStr, targetElementId) {
+            function calculateDateDifference(targetDateStr, targetElementId, showTime = true) {
                 const targetDate = new Date(targetDateStr);
                 const currentDate = new Date();
                 const timeDifference = targetDate.getTime() - currentDate.getTime();
-                const dayDifference = Math.ceil(timeDifference / (1000 * 3600 * 24));
-                document.getElementById(targetElementId).innerHTML = dayDifference;
+
+                const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+                if (showTime) {
+                    const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+                    document.getElementById(targetElementId).innerHTML = `${days}天 ${hours}:${minutes}:${seconds}`;
+                } else {
+                    document.getElementById(targetElementId).innerHTML = `${days}天`;
+                }
             }
 
-            calculateDateDifference("February 16, 2025", "dateDifference");
-            calculateDateDifference("June 28, 2025", "dateDifference1");
+            function updateCountdown() {
+                calculateDateDifference("February 16, 2025 09:00:00", "dateDifference");
+                calculateDateDifference("June 28, 2025", "dateDifference1", false); // 只显示天数
+            }
+
+            // 初始调用
+            updateCountdown();
+
+            // 每秒更新一次
+            setInterval(updateCountdown, 1000);
         });
     </script>
 </head>
@@ -60,8 +75,8 @@
 <body>
     <div class="container">
         <h1>倒计日</h1>
-        <p>离开学还有<span id="dateDifference"></span>天</p>
-        <p>离中考还有<span id="dateDifference1"></span>天</p>
+        <p>离开学还有<span id="dateDifference"></span></p></p>
+        <p>离中考还有<span id="dateDifference1"></span></p>
     </div>
 </body>
 
